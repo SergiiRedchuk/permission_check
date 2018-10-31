@@ -14,6 +14,7 @@ node('linux') {
   }
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
+      buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'deleteLicenses'
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'copyLicenses'
     }
