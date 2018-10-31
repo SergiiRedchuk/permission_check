@@ -14,8 +14,6 @@ node('linux') {
   }
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
-      // todo repeated
-      // org.apache.commons.io.FileUtils.deleteDirectory(new File("${WORKSPACE}/license"))
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'copyLicenses'
     }
@@ -31,7 +29,6 @@ node('linux') {
 }
 
 def pushLicenseReport() {
-  debug("pushLicenseReport")
   sshagent (credentials: ['433ac100-b3c2-4519-b4d6-207c029a103b']) {
     def configStatus = sh(script: "${GIT_SSH_COMMAND} git config --global user.email cwdsdoeteam@osi.ca.gov; git config --global user.name Jenkins",
             returnStatus: true)
