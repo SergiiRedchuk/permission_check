@@ -23,6 +23,7 @@ def pushLicenseReport() {
         throw new Exception("git config failed")
     }
     sh(script: "${GIT_SSH_COMMAND} git add license", returnStatus: true)
+    sh(script: "${GIT_SSH_COMMAND} git commit -m 'updated license info'", returnStatus: true)
     def pushStatus = sh(script: "${GIT_SSH_COMMAND} git push", returnStatus: true)
     if (pushStatus != 0) {
         throw new Exception("Unable to push licenses")
