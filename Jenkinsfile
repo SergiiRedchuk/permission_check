@@ -15,15 +15,16 @@ node('linux') {
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
       // todo repeated
-      org.apache.commons.io.FileUtils.deleteDirectory(new File("${WORKSPACE}/license"))
+      // org.apache.commons.io.FileUtils.deleteDirectory(new File("${WORKSPACE}/license"))
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
+      buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'copyLicenses'
     }
   }
   stage ('Push License Report') {
     if ('master' == BRANCH) {
       // todo test repeated
-      org.apache.commons.io.FileUtils.copyDirectoryToDirectory(
-        new File("${WORKSPACE}/build/reports/license"), new File("${WORKSPACE}"))
+      //org.apache.commons.io.FileUtils.copyDirectoryToDirectory(
+      //  new File("${WORKSPACE}/build/reports/license"), new File("${WORKSPACE}"))
       pushLicenseReport()
     }
   }
