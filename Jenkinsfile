@@ -15,22 +15,19 @@ node('linux') {
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
-
-      // todo test repeated
-
-      org.apache.commons.io.FileUtils.copyDirectoryToDirectory(new File('./build/reports/license'), new File('.'))
     }
   }
   stage ('Push License Report') {
     if ('master' == BRANCH) {
+      // todo test repeated
+      org.apache.commons.io.FileUtils.copyDirectoryToDirectory(
+        new File("${WORKSPACE}/build/reports/license"), new File("${WORKSPACE}/."))
       pushLicenseReport()
     }
   }
 }
 
 def pushLicenseReport() {
-  // todo if from master then push licenses
-
   debug("pushLicenseReport")
   sshagent (credentials: ['433ac100-b3c2-4519-b4d6-207c029a103b']) {
     def configStatus = sh(script: "${GIT_SSH_COMMAND} git config --global user.email cwdsdoeteam@osi.ca.gov; git config --global user.name Jenkins",
