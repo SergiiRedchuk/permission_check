@@ -13,6 +13,7 @@ node('master') {
   }
   stage ('Generate License Report') {
     buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
+    
     // todo test repeated
     org.apache.commons.io.FileUtils.copyDirectoryToDirectory(new File('./build/reports/license'), new File('.'))
   }
