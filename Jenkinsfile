@@ -37,7 +37,7 @@ def pushLicenseReport() {
     }
     sh(script: "${GIT_SSH_COMMAND} git add license", returnStatus: true)
     sh(script: "${GIT_SSH_COMMAND} git commit -m 'updated license info'", returnStatus: true)
-    def pushStatus = sh(script: "${GIT_SSH_COMMAND} git push", returnStatus: true)
+    def pushStatus = sh(script: "${GIT_SSH_COMMAND} git push --set-upstream origin master", returnStatus: true)
     if (pushStatus != 0) {
         throw new Exception("Unable to push licenses")
     }
