@@ -14,6 +14,7 @@ node('linux') {
   }
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
+      org.apache.commons.io.FileUtils.deleteDirectory(new File("${WORKSPACE}/license"))
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
     }
   }
