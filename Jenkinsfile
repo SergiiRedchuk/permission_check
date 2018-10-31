@@ -10,7 +10,7 @@ node('linux') {
     //checkout([$class: 'GitSCM', branches: [[name: BRANCH], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:kaver79/permission_check.git']]])
     rtGradle.tool = "Gradle_35"
     rtGradle.resolver repo: 'repo', server: serverArti
-    rtGradle.useWrapper = true
+    rtGradle.useWrapper = false
   }
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
