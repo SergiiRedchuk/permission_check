@@ -137,9 +137,9 @@ configurations.all {
 }
 
 dependencies {
-    compile group: 'com.connx.jdbc', name: 'connxjdbc', version: '12.4'
-    compile group: 'com.ibm', name: 'db2jcc4', version: '4.21.29'
-    compile group: 'com.ibm', name: 'db2jcc_license_cisuz', version: '4.0.0'
+    //compile group: 'com.connx.jdbc', name: 'connxjdbc', version: '12.4'
+    //compile group: 'com.ibm', name: 'db2jcc4', version: '4.21.29'
+    //compile group: 'com.ibm', name: 'db2jcc_license_cisuz', version: '4.0.0'
 
 // Dropwizard-guice 1.0.0.2 conflicts with jersey-client 2.25.
 // Exclude transitive dependencies.
@@ -157,7 +157,7 @@ dependencies {
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.1'
     compile group: 'org.slf4j', name: 'slf4j-ext', version: '1.7.25'
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
-    //compile group: 'org.secnod.dropwizard', name: 'dropwizard-shiro', version: '0.2.0'
+    compile group: 'org.secnod.dropwizard', name: 'dropwizard-shiro', version: '0.2.0'
     compile group: 'org.apache.shiro', name: 'shiro-guice', version: '1.2.0'
 }
 
