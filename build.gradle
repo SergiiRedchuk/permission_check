@@ -155,8 +155,6 @@ dependencies {
     compile group: 'gov.ca.cwds.api', name: 'legacy-data-access-services', version: coreApiVersion
     compile group: 'gov.ca.cwds.api', name: 'api-core-common', version: coreApiVersion
 
-    compile group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '4.39'
-
     compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.1'
     compile group: 'org.slf4j', name: 'slf4j-ext', version: '1.7.25'
