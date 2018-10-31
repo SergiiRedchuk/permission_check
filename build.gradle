@@ -1,0 +1,366 @@
+import org.apache.tools.ant.filters.FixCrLfFilter
+import org.apache.tools.ant.filters.ReplaceTokens
+import org.apache.tools.ant.taskdefs.condition.Os
+import java.text.SimpleDateFormat
+import org.ajoberstar.grgit.Grgit
+import static org.gradle.api.logging.LogLevel.INFO
+
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
+    }
+}
+
+plugins {
+    id "org.sonarqube" version "2.6.2"
+    id "net.foragerr.jmeter" version "1.0.10-3.3"
+    id "com.github.hierynomus.license" version "0.14.0"
+    id "org.ajoberstar.grgit" version "1.5.1-rc.3"
+    id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.55"
+}
+
+project.logging.setLevelInternal(INFO)
+
+project.ext {
+    projectGroup = 'gov.ca.cwds.cals'
+    projectDockerGroup = 'cwds'
+    projectDockerAppName = 'cals-api'
+    projectMajorVersion = '1.1'
+    dropwizardVersion = '1.1.0'
+    coreApiVersion = '1.9.4_867-RC'
+    apiSecurityVersion = '3.0.4_825-RC'
+    cwdsModelVersion = '0.8.4_653-RC'
+    dmsVersion = '0.7.4_113-RC'
+    mapstructVersion = '1.1.0.Final'
+    dbunitVersion = '2.5.0'
+    mainClass = 'gov.ca.cwds.cals.CalsApiApplication'
+
+    targetDockerHubOrganization = System.env.DOCKERHUB_ORG ?: 'cwds'
+
+    isRelease = System.getProperty("Release") == "true"
+    buildNumber = System.getProperty('BuildNumber')
+    customVersion = System.getProperty('CustomVersion')
+    
+    projectSnapshotVersion = projectMajorVersion + "-SNAPSHOT"
+    projectReleaseVersion = (customVersion == null || customVersion == "" || customVersion.startsWith('$') ? projectMajorVersion + '_' + buildNumber + '-RC' : customVersion )
+    projectVersion = (isRelease ? projectReleaseVersion : projectSnapshotVersion )
+    dockerTag = projectVersion
+
+    // assumed that Windows users use the Docker Toolbox
+    buildEnv = System.env.BUILD_ENV ?: (Os.isFamily(Os.FAMILY_WINDOWS) ? 'WIN_DEV' : 'JENKINS')
+    devDockerHost = System.env.DEV_DOCKER_HOST ?: '192.168.99.100'
+    devDockerPort = 2376
+
+    commonsCollectionsVersion = '4.1'
+
+    // Publishing configuration
+    snapshotMavenRepo = "http://pr.dev.cwds.io/artifactory/repo"
+    releaseMavenRepo = "http://pr.dev.cwds.io/artifactory/libs-release"
+    artifactoryRepo = (isRelease ? releaseMavenRepo : snapshotMavenRepo)
+}
+
+group projectGroup
+version projectVersion
+
+repositories {
+    mavenLocal()
+    maven {
+        url artifactoryRepo
+    }
+}
+
+apply plugin: "jacoco"
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'docker'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'maven-publish'
+
+sourceSets {
+    main {
+        output.resourcesDir = "build/classes/main"
+        java {
+            resources {
+                exclude '**/version.properties'
+            }
+        }
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "${name}"
+        property "sonar.projectKey", "${group}:${name}"
+        property "sonar.jacoco.reportPaths", "${project.buildDir}/jacoco/test.exec"
+        property "sonar.exclusions",
+                "src/main/java/gov/ca/cwds/cals/persistence/model/cms/*.*, " +
+                        "src/main/java/gov/ca/cwds/cals/persistence/model/fas/*.*, " +
+                        "src/main/java/gov/ca/cwds/cals/persistence/model/lisfas/*.*, " +
+                        "src/test/resources/liquibase/cms/dml/*.xml, " +
+                        "src/test/resources/liquibase/fas/dml/*.xml, " +
+                        "src/test/resources/liquibase/lis/dml/*.xml"
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${project.buildDir}/jacocoHtml"
+    }
+
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    'org/hibernate/*'
+            ])
+        })
+    }
+}
+
+
+configurations.all {
+    // Check for updates every  build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+    compile group: 'com.connx.jdbc', name: 'connxjdbc', version: '12.4'
+    compile group: 'com.ibm', name: 'db2jcc4', version: '4.21.29'
+    compile group: 'com.ibm', name: 'db2jcc_license_cisuz', version: '4.0.0'
+
+// Dropwizard-guice 1.0.0.2 conflicts with jersey-client 2.25.
+// Exclude transitive dependencies.
+
+    compile (group: 'gov.ca.cwds.api', name: 'api-core', version: coreApiVersion) {
+        exclude group: 'org.glassfish.jersey.core'
+    }
+    compile group: 'gov.ca.cwds.api', name: 'drools-engine', version: coreApiVersion
+    compile group: 'gov.ca.cwds.api', name: 'legacy-data-access-services', version: coreApiVersion
+    compile group: 'gov.ca.cwds.api', name: 'api-core-common', version: coreApiVersion
+
+    compile group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '4.39'
+
+    compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.1'
+    compile group: 'org.slf4j', name: 'slf4j-ext', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    compile group: 'org.secnod.dropwizard', name: 'dropwizard-shiro', version: '0.2.0'
+    compile group: 'org.apache.shiro', name: 'shiro-guice', version: '1.2.0'
+}
+
+mainClassName = mainClass
+
+task convertEntrypointToLF (type: Copy) {
+    from projectDir
+    into project.buildDir
+    include 'entrypoint.sh'
+    filter(FixCrLfFilter.class, eol:FixCrLfFilter.CrLf.newInstance("lf"))
+}
+distributions {
+    main {
+        contents {
+            into('dms') {
+                from { 'src/main/resources/dms' }
+            }
+        }
+    }
+}
+
+
+shadowJar {
+    classifier = 'dist'
+    baseName = 'cals-api'
+    mergeServiceFiles()
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    version = ''
+    zip64 = true
+}
+
+run {
+    args 'server', './config/cals-api.yml'
+//    args 'server', './config/cals-api-lis-connx.yml'
+}
+
+test {
+    systemProperty 'java.net.preferIPv4Stack', 'true'
+    exclude '**/IT*'
+    exclude '**/*IntegrationTestSuite*'
+}
+
+jmeter {
+    jmLog = file("${project.buildDir}/jmeter/jmeter.log")
+    jmTestFiles = [file("${project.rootDir}/jmeter/FacilityProfileAPI.jmx")]
+    jmSystemPropertiesFiles = [file("${project.rootDir}/jmeter/config.properties")]
+    jmSystemProperties = new ArrayList<String>()
+    System.getProperties().each {k,v ->
+        jmSystemProperties.add("-D$k=$v")
+    }
+}
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    exclude ('dms')
+}
+
+task copyConfig(type: Copy) {
+    from 'config'
+    into 'build/docker/config'
+}
+
+task versionTxt()  {
+    doLast {
+        new File("$projectDir/version.txt").text = """
+Version: $projectVersion
+Build.number: ${System.getenv("BUILD_NUMBER") ?: "IDE"}
+Revision: ${Grgit.open(dir: '.').head().id}
+Buildtime: ${new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date())}
+Application-name: CWDS cals-api
+"""
+    }
+}
+
+task copyVersion(type: Copy, dependsOn: versionTxt) {
+    from '.'
+    include 'version.txt'
+    into 'build/docker'
+}
+
+
+task copyDist(type: Copy, dependsOn: shadowJar) {
+    from 'build/libs'
+    into 'build/docker/libs'
+}
+
+task readArguments() {
+    doLast{
+        println "ReleaseDocker: " + releaseDocker
+        println "Build: " + buildNumber
+        println "Docker Tag: " + dockerTag
+    }
+}
+
+task calsApiDocker(type: Docker,  dependsOn: [copyConfig, copyVersion, copyDist] ) {
+    dockerfile = "Dockerfile"
+    project.group = projectDockerGroup
+    applicationName = projectDockerAppName
+    tagVersion = dockerTag
+}
+
+task createDockerImage(type:Exec, dependsOn: [convertEntrypointToLF, copyVersion, shadowJar]) {
+    commandLine 'docker',  'build',  '-t',  'cwds/cals-api', '.'
+}
+
+task tagDockerImage(type:Exec, dependsOn: createDockerImage) {
+    commandLine 'docker',  'tag',  'cwds/cals-api',  "cwds/cals-api:$dockerTag"
+}
+
+task pushDockerLatest(type:Exec, dependsOn: createDockerImage) {
+    commandLine 'docker',  'push',  'cwds/cals-api:latest'
+}
+
+task pushDockerVersionTagged(type:Exec, dependsOn: tagDockerImage) {
+    commandLine 'docker',  'push',  "cwds/cals-api:$dockerTag"
+}
+
+task dropDockerImage(type:Exec) {
+    commandLine 'docker',  'rmi',  "cwds/cals-api:$dockerTag"
+    commandLine 'docker',  'rmi',  "cwds/cals-api:latest"
+
+}
+
+task publishDocker(dependsOn: [pushDockerLatest, pushDockerVersionTagged]) {
+    doLast {
+        println 'Published'
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs = [
+            '-Amapstruct.suppressGeneratorTimestamp=true',
+            '-Amapstruct.unmappedTargetPolicy=IGNORE'
+    ]
+}
+task createGitTag(type:Exec) {
+    commandLine "git", "tag", "$dockerTag"
+}
+
+task pushGitTag(type:Exec, dependsOn: createGitTag) {
+    doFirst{
+        environment "GIT_SSH_COMMAND", 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+    }
+
+    commandLine "git", "push", "origin", "$dockerTag"
+
+    doLast {
+        println "Pushed tagged to Git origin"
+    }
+}
+
+processResources {
+    with copySpec {
+        from 'src/main/resources/version.properties'
+        filter(ReplaceTokens, tokens:[
+                'build.version' : projectVersion,
+                'build.number' : (System.getenv("BUILD_NUMBER") ?: "IDE")
+        ])
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId projectGroup
+            artifactId rootProject.name
+        }
+    }
+    repositories {
+        maven {
+            url artifactoryRepo
+        }
+    }
+}
+
+// reused in sub-modules
+project.ext.dockerEnvVars = project.buildEnv != 'WIN_DEV' ? [:] : [
+        DOCKER_CERT_PATH: System.getProperty("user.home") + '/.docker/machine/machines/default',
+        DOCKER_HOST: "tcp://$project.devDockerHost:$project.devDockerPort",
+        DOCKER_MACHINE_NAME: 'default',
+        DOCKER_TLS_VERIFY: '1',
+        COMPOSE_CONVERT_WINDOWS_PATHS: 'true'
+]
+
+// reused in sub-modules
+def isPortOpen(host, port) {
+    try {
+        Socket socket = new Socket(host, port)
+        socket.close()
+        return true
+    } catch (IOException e) {
+        return false
+    }
+}
+
+// reused in sub-modules
+task checkDockerService {
+    enabled = project.buildEnv == 'WIN_DEV'
+    doFirst {
+        if (!isPortOpen(project.devDockerHost, project.devDockerPort)) {
+            throw new GradleException('Docker service is not available. Windows users should run Docker Quickstart Terminal of Docker Toolbox')
+        }
+    }
+}
+
