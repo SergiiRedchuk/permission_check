@@ -23,7 +23,7 @@ node('linux') {
     if ('master' == BRANCH) {
       // todo test repeated
       org.apache.commons.io.FileUtils.copyDirectoryToDirectory(
-        new File("${WORKSPACE}/build/reports/license"), new File("${WORKSPACE}))
+        new File("${WORKSPACE}/build/reports/license"), new File("${WORKSPACE}"))
       pushLicenseReport()
     }
   }
