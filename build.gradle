@@ -26,9 +26,9 @@ plugins {
     id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.55"
 }
 
-task copyLicenses {
-    org.apache.commons.io.FileUtils.copyDirectoryToDirectory(
-            new File("${buildDir}/reports/license"), new File("${projectDir}"))
+task copyLicenses(type: Copy) {
+    from "${buildDir}/reports/license"
+    into "${projectDir}/license"
 }
 
 project.logging.setLevelInternal(INFO)
