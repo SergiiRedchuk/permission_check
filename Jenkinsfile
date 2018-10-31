@@ -2,7 +2,7 @@
 GIT_SSH_COMMAND = 'GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
 def BRANCH = 'master'
 
-node('master') {
+node('linux22') {
   def serverArti = Artifactory.server 'CWDS_DEV'
   def rtGradle = Artifactory.newGradleBuild()
   stage ('Preparation') {
