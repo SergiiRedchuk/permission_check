@@ -20,7 +20,6 @@ node('linux') {
   }
   stage ('Push License Report') {
     if ('master' == BRANCH) {
-      // todo test repeated
       pushLicenseReport()
     }
   }
