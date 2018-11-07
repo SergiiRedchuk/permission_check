@@ -1,13 +1,19 @@
-// Used to avoid known_hosts addition, which would require each machine to have GitHub added in advance (maybe should do?)
-GIT_SSH_COMMAND = 'GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
 def BRANCH = 'master'
+
+//def CRED_ID = '433ac100-b3c2-4519-b4d6-207c029a103b'
+def CRED_ID = 'c2120f6c-4df6-4842-a0d4-d08cac68a6b2'
+library identifier: 'jenk_lib@master', retriever: modernSCM(
+  [$class: 'SshGit',
+   remote: 'git@github.com:SergiiRedchuk/jenk_lib.git',
+   credentialsId: CRED_ID])
+
+def sshGit = new SshGit(CRED_ID)
 
 node('linux') {
   def serverArti = Artifactory.server 'CWDS_DEV'
   def rtGradle = Artifactory.newGradleBuild()
   stage ('Preparation') {
-    git branch: BRANCH, credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:kaver79/permission_check.git'
-    //checkout([$class: 'GitSCM', branches: [[name: BRANCH], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:kaver79/permission_check.git']]])
+    git branch: BRANCH, credentialsId: CRED_ID, url: 'git@github.com:SergiiRedchuk/permission_check.git'
     rtGradle.tool = "Gradle_35"
     rtGradle.resolver repo: 'repo', server: serverArti
     rtGradle.useWrapper = false
@@ -27,6 +33,7 @@ node('linux') {
 }
 
 def pushLicenseReport() {
+/*
   sshagent (credentials: ['433ac100-b3c2-4519-b4d6-207c029a103b']) {
     def configStatus = sh(script: "${GIT_SSH_COMMAND} git config --global user.email cwdsdoeteam@osi.ca.gov; git config --global user.name Jenkins",
             returnStatus: true)
@@ -40,4 +47,10 @@ def pushLicenseReport() {
         throw new Exception("Unable to push licenses")
     }
   }
+  */
+  sshGit.exec('config --global user.email cwdsdoeteam@osi.ca.gov')
+  sshGit.exec('config --global user.name Jenkins')
+  sshGit.exec('add license')
+  sshGit.exec('git commit -m "updated license info"')
+  sshGit.exec('push --set-upstream origin master')
 }
