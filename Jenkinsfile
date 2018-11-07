@@ -9,7 +9,7 @@ library identifier: 'jenk_lib@master', retriever: modernSCM(
 
 def sshGit = new SshGit(CRED_ID)
 
-node('linux') {
+node {
   def serverArti = Artifactory.server 'CWDS_DEV'
   def rtGradle = Artifactory.newGradleBuild()
   stage ('Preparation') {
