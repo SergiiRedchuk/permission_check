@@ -7,7 +7,10 @@ library identifier: 'jenk_lib@master', retriever: modernSCM(
    remote: 'git@github.com:SergiiRedchuk/jenk_lib.git',
    credentialsId: CRED_ID])
 
+@Library('jenk_lib@master')
 import gov.ca.cwds.jenkins.SshGit
+//def lib = library('my-shared-library').com.mycorp.pipeline // preselect the package
+//echo useSomeLib(lib.Helper.new(lib.Constants.SOME_TEXT))
 
 def sshGit = new SshGit(CRED_ID)
 
