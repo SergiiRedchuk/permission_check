@@ -3,9 +3,11 @@ def BRANCH = 'master'
 //def CRED_ID = '433ac100-b3c2-4519-b4d6-207c029a103b'
 def CRED_ID = 'c2120f6c-4df6-4842-a0d4-d08cac68a6b2'
 library identifier: 'jenk_lib@master', retriever: modernSCM(
-  [$class: 'SshGit',
+  [$class: 'GitSCMSource',
    remote: 'git@github.com:SergiiRedchuk/jenk_lib.git',
    credentialsId: CRED_ID])
+
+import gov.ca.cwds.jenkins.SshGit
 
 def sshGit = new SshGit(CRED_ID)
 
