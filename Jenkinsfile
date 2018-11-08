@@ -15,8 +15,6 @@ import gov.ca.cwds.jenkins.SshGit
 //def lib = library('my-shared-library').com.mycorp.pipeline // preselect the package
 //echo useSomeLib(lib.Helper.new(lib.Constants.SOME_TEXT))
 
-def sshGit = new SshGit(CRED_ID)
-
 node('master') {
   //def serverArti = Artifactory.server 'CWDS_DEV'
   //def rtGradle = Artifactory.newGradleBuild()
@@ -38,12 +36,12 @@ node('master') {
   }
   stage ('Push License Report') {
     if ('master' == BRANCH) {
-      pushLicenseReport()
+      pushLicenseReport(new SshGit(CRED_ID))
     }
   }
 }
 
-def pushLicenseReport() {
+def pushLicenseReport(sshExecutor) {
 /*
   sshagent (credentials: ['433ac100-b3c2-4519-b4d6-207c029a103b']) {
     def configStatus = sh(script: "${GIT_SSH_COMMAND} git config --global user.email cwdsdoeteam@osi.ca.gov; git config --global user.name Jenkins",
@@ -59,9 +57,9 @@ def pushLicenseReport() {
     }
   }
   */
-  sshGit.exec('config --global user.email cwdsdoeteam@osi.ca.gov')
-  sshGit.exec('config --global user.name Jenkins')
-  sshGit.exec('add license')
-  sshGit.exec('git commit -m "updated license info"')
-  sshGit.exec('push --set-upstream origin master')
+  sshExecutor.exec('config --global user.email cwdsdoeteam@osi.ca.gov')
+  sshExecutor.exec('config --global user.name Jenkins')
+  sshExecutor.exec('add license')
+  sshExecutor.exec('git commit -m "updated license info"')
+  sshExecutor.exec('push --set-upstream origin master')
 }
