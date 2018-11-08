@@ -1,7 +1,6 @@
 def BRANCH = 'master'
 
-//def CRED_ID = '433ac100-b3c2-4519-b4d6-207c029a103b'
-def CRED_ID = 'c2120f6c-4df6-4842-a0d4-d08cac68a6b2'
+def CRED_ID = '1db97a1a-6604-4d90-9790-a0fd931af6f4'
 
 /*
 library identifier: 'jenk_lib@master', retriever: modernSCM(
