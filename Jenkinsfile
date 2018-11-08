@@ -18,19 +18,20 @@ import gov.ca.cwds.jenkins.SshGit
 def sshGit = new SshGit(CRED_ID)
 
 node('master') {
-  def serverArti = Artifactory.server 'CWDS_DEV'
-  def rtGradle = Artifactory.newGradleBuild()
+  //def serverArti = Artifactory.server 'CWDS_DEV'
+  //def rtGradle = Artifactory.newGradleBuild()
   stage ('Preparation') {
     git branch: BRANCH, credentialsId: CRED_ID, url: 'git@github.com:SergiiRedchuk/permission_check.git'
-    rtGradle.tool = "Gradle_35"
-    rtGradle.resolver repo: 'repo', server: serverArti
-    rtGradle.useWrapper = false
+    //rtGradle.tool = "Gradle_35"
+    //rtGradle.resolver repo: 'repo', server: serverArti
+    //rtGradle.useWrapper = false
   }
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
-      buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'deleteLicenses'
-      buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
-      buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'copyLicenses'
+      //buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'deleteLicenses'
+      //buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
+      //buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'copyLicenses'
+      sh './gradlew deleteLicenses downloadLicenses copyLicenses'
     }
   }
   stage ('Push License Report') {
