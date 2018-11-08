@@ -31,7 +31,8 @@ node('master') {
       //buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'deleteLicenses'
       //buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'downloadLicenses'
       //buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'copyLicenses'
-      sh 'gradle deleteLicenses downloadLicenses copyLicenses'
+      // WARNING: Windows
+      bat 'gradle deleteLicenses downloadLicenses copyLicenses'
     }
   }
   stage ('Push License Report') {
