@@ -9,8 +9,8 @@ library identifier: 'jenk_lib@master', retriever: modernSCM(
    credentialsId: CRED_ID])
    */
 
-@Library('jenk_lib@master') _
-import gov.ca.cwds.jenkins.SshGit
+@Library('jenk_lib@master')
+import gov.ca.cwds.jenkins.SshAgent
 //def lib = library('my-shared-library').com.mycorp.pipeline // preselect the package
 //echo useSomeLib(lib.Helper.new(lib.Constants.SOME_TEXT))
 
@@ -34,16 +34,17 @@ node('master') {
   stage ('Push License Report') {
     if ('master' == BRANCH) {
 
+/*
       sshagent (credentials: ["${CRED_ID}"]) {
-          sh(script: sshGitCommand('config --global user.email cwdsdoeteam@osi.ca.gov'), returnStatus: true)
-      }
+          sh(script: sshCommand('git config --global user.email cwdsdoeteam@osi.ca.gov'), returnStatus: true)
+      }*/
 
-      pushLicenseReport(new SshGit(CRED_ID))
+      pushLicenseReport(new SshAgent(this, CRED_ID))
     }
   }
 }
 
-def pushLicenseReport(sshExecutor) {
+def pushLicenseReport(sshAgent) {
 /*
   sshagent (credentials: ['433ac100-b3c2-4519-b4d6-207c029a103b']) {
     def configStatus = sh(script: "${GIT_SSH_COMMAND} git config --global user.email cwdsdoeteam@osi.ca.gov; git config --global user.name Jenkins",
@@ -60,11 +61,9 @@ def pushLicenseReport(sshExecutor) {
   }
   */
 
-  // sshExecutor.exec('config --global user.email cwdsdoeteam@osi.ca.gov')
-
-
-  sshExecutor.exec('config --global user.name Jenkins')
-  sshExecutor.exec('add license')
-  sshExecutor.exec('git commit -m "updated license info"')
-  sshExecutor.exec('push --set-upstream origin master')
+  sshAgent.exec('git config --global user.email cwdsdoeteam@osi.ca.gov')
+  sshAgent.exec('git config --global user.name Jenkins')
+  sshAgent.exec('git add license')
+  sshAgent.exec('git commit -m "updated license info"')
+  sshAgent.exec('git push --set-upstream origin master')
 }
