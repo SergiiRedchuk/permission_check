@@ -33,6 +33,11 @@ node('master') {
   }
   stage ('Push License Report') {
     if ('master' == BRANCH) {
+
+      sshagent (credentials: [CRED_ID]) {
+          sh(script: sshGitCommand('config --global user.email cwdsdoeteam@osi.ca.gov'), returnStatus: true)
+      }
+
       pushLicenseReport(new SshGit(CRED_ID))
     }
   }
@@ -54,10 +59,9 @@ def pushLicenseReport(sshExecutor) {
     }
   }
   */
+
   // sshExecutor.exec('config --global user.email cwdsdoeteam@osi.ca.gov')
-  sshagent (credentials: [CRED_ID]) {
-      sh(script: sshGitCommand('config --global user.email cwdsdoeteam@osi.ca.gov'), returnStatus: true)
-  }
+
 
   sshExecutor.exec('config --global user.name Jenkins')
   sshExecutor.exec('add license')
