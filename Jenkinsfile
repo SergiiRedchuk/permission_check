@@ -9,8 +9,8 @@ library identifier: 'jenk_lib@master', retriever: modernSCM(
    credentialsId: CRED_ID])
    */
 
-@Library('jenk_lib@master')
-import gov.ca.cwds.jenkins.SshGit
+@Library('jenk_lib@master') _
+// import gov.ca.cwds.jenkins.SshGit
 //def lib = library('my-shared-library').com.mycorp.pipeline // preselect the package
 //echo useSomeLib(lib.Helper.new(lib.Constants.SOME_TEXT))
 
@@ -54,7 +54,11 @@ def pushLicenseReport(sshExecutor) {
     }
   }
   */
-  sshExecutor.exec('config --global user.email cwdsdoeteam@osi.ca.gov')
+  // sshExecutor.exec('config --global user.email cwdsdoeteam@osi.ca.gov')
+  sshagent (credentials: [CRED_ID]) {
+      sh(script: sshGitCommand('config --global user.email cwdsdoeteam@osi.ca.gov'), returnStatus: true)
+  }
+
   sshExecutor.exec('config --global user.name Jenkins')
   sshExecutor.exec('add license')
   sshExecutor.exec('git commit -m "updated license info"')
