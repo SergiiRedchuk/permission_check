@@ -34,7 +34,7 @@ node('master') {
   stage ('Push License Report') {
     if ('master' == BRANCH) {
 
-      sshagent (credentials: [CRED_ID]) {
+      sshagent (credentials: ["${CRED_ID}"]) {
           sh(script: sshGitCommand('config --global user.email cwdsdoeteam@osi.ca.gov'), returnStatus: true)
       }
 
