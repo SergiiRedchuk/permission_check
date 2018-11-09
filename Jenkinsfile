@@ -10,7 +10,7 @@ library identifier: 'jenk_lib@master', retriever: modernSCM(
    */
 
 @Library('jenk_lib@master') _
-// import gov.ca.cwds.jenkins.SshGit
+import gov.ca.cwds.jenkins.SshGit
 //def lib = library('my-shared-library').com.mycorp.pipeline // preselect the package
 //echo useSomeLib(lib.Helper.new(lib.Constants.SOME_TEXT))
 
