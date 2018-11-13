@@ -3,7 +3,7 @@ def BRANCH = 'master'
 def CRED_ID = '1db97a1a-6604-4d90-9790-a0fd931af6f4'
 
 @Library('jenk_lib@master')
-import gov.ca.cwds.jenkins.SshAgent
+import gov.ca.cwds.jenkins.*
 
 node('master') {
   stage ('Preparation') {
@@ -11,7 +11,16 @@ node('master') {
   }
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
-      sh './gradlew deleteLicenses downloadLicenses copyLicenses'
+      if (Utils.hasGradleBuildFile(this)) {
+        echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+        echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+        echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+        sh './gradlew deleteLicenses downloadLicenses copyLicenses'
+      } else if (Utils.hasPackageJsonFile(this)) {
+        // TODO
+      } else {
+        // TODO
+      }
     }
   }
   stage ('Push License Report') {
