@@ -11,15 +11,15 @@ node('master') {
   }
   stage ('Generate License Report') {
     if ('master' == BRANCH) {
-      if (Utils.hasGradleBuildFile(this)) {
-        echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
-        echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
-        echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
-        sh './gradlew deleteLicenses downloadLicenses copyLicenses'
-      } else if (Utils.hasPackageJsonFile(this)) {
-        // TODO
+      // todo sh './gradlew deleteLicenses downloadLicenses copyLicenses'
+      if (Utils.hasLicensingSupport(this)) {
+        echo "222222222222222222"
+        echo "222222222222222222"
+        echo "222222222222222222"
       } else {
-        // TODO
+        echo "NNNNNNNNNNNNNNNNNNNNN"
+        echo "NNNNNNNNNNNNNNNNNNNNN"
+        echo "NNNNNNNNNNNNNNNNNNNNN"
       }
     }
   }
