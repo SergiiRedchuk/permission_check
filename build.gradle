@@ -27,12 +27,12 @@ plugins {
 }
 
 task deleteLicenses(type: Delete) {
-    delete "${buildDir}/reports/license", "${projectDir}/license"
+    delete "${buildDir}/reports/license", "${projectDir}/legal"
 }
 
 task copyLicenses(type: Copy) {
     from "${buildDir}/reports/license"
-    into "${projectDir}/license"
+    into "${projectDir}/legal"
 }
 
 project.logging.setLevelInternal(INFO)
