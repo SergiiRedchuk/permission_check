@@ -26,15 +26,6 @@ plugins {
     id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.55"
 }
 
-task deleteLicenses(type: Delete) {
-    delete "${buildDir}/reports/license", "${projectDir}/legal"
-}
-
-task copyLicenses(type: Copy) {
-    from "${buildDir}/reports/license"
-    into "${projectDir}/legal"
-}
-
 project.logging.setLevelInternal(INFO)
 
 project.ext {
