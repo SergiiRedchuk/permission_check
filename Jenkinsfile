@@ -15,6 +15,8 @@ node('master') {
   }*/
 
   updateLicenseReportStage {
+    script = this
+    branch = BRANCH
     sshCredentialsId = SSH_CRED_ID
   }
 }
