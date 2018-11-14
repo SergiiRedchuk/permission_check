@@ -18,7 +18,7 @@ node('master') {
     licensingSupport.pushLicenseReport()
   }
   */
-  stage ('Generate and Push License Report') {
+  stage ('Update License Report') {
     licensingSupport.generateAndPushLicenseReport()
   }
 }
