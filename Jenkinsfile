@@ -11,7 +11,7 @@ node('master') {
     git branch: BRANCH, credentialsId: CRED_ID, url: 'git@github.com:SergiiRedchuk/permission_check.git'
   }
   stage ('Generate License Report') {
-    licensingSupport.generateLicenseInfo()
+    licensingSupport.generateLicenseReport()
   }
   stage ('Push License Report') {
     licensingSupport.pushLicenseReport()
