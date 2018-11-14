@@ -6,8 +6,6 @@
     <dependency>antlr-runtime-3.5.jar</dependency>
   </license>
   <license name='CDDL + GPLv2 with classpath exception' url='https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html'>
-    <dependency>javax.annotation-api-1.2.jar</dependency>
-    <dependency>osgi-resource-locator-1.0.1.jar</dependency>
     <dependency>javax.el-3.0.0.jar</dependency>
     <dependency>javax.servlet-api-3.1.0.jar</dependency>
   </license>
@@ -141,7 +139,6 @@
   <license name='No license found'>
     <dependency>api-core-cms-1.9.4_867-RC.jar</dependency>
     <dependency>dropwizard-guice-1.0.6.0.jar</dependency>
-    <dependency>legacy-data-access-services-1.9.4_867-RC.jar</dependency>
     <dependency>legacy-data-access-1.9.4_867-RC.jar</dependency>
     <dependency>jcip-annotations-1.0.jar</dependency>
     <dependency>db2jcc4-4.0.0.jar</dependency>
@@ -182,7 +179,6 @@
     <dependency>lang-mustache-client-5.5.0.jar</dependency>
     <dependency>xmlbeans-2.6.0.jar</dependency>
     <dependency>parent-join-client-5.5.0.jar</dependency>
-    <dependency>mapstruct-jdk8-1.1.0.Final.jar</dependency>
     <dependency>jackson-dataformat-yaml-2.8.7.jar</dependency>
     <dependency>classmate-1.3.1.jar</dependency>
     <dependency>jackson-datatype-joda-2.8.7.jar</dependency>
@@ -239,17 +235,12 @@
     <dependency>log4j-over-slf4j-1.7.24.jar</dependency>
   </license>
   <license name='CDDL+GPL License' url='http://glassfish.java.net/public/CDDL+GPL_1_1.html'>
-    <dependency>jersey-common-2.25.1.jar</dependency>
     <dependency>jersey-declarative-linking-2.23.2.jar</dependency>
-    <dependency>jersey-server-2.25.1.jar</dependency>
     <dependency>jersey-container-servlet-core-2.25.1.jar</dependency>
     <dependency>jersey-metainf-services-2.25.1.jar</dependency>
-    <dependency>jersey-media-jaxb-2.25.1.jar</dependency>
     <dependency>jersey-media-multipart-2.1.jar</dependency>
     <dependency>jersey-container-servlet-2.25.1.jar</dependency>
-    <dependency>jersey-guava-2.25.1.jar</dependency>
     <dependency>jersey-bean-validation-2.25.1.jar</dependency>
-    <dependency>jersey-client-2.25.1.jar</dependency>
   </license>
   <license name='Apache 2.0' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
     <dependency>error_prone_annotations-2.0.18.jar</dependency>
@@ -288,11 +279,10 @@
     <dependency>ehcache-2.10.3.jar</dependency>
   </license>
   <license name='CDDL + GPLv2 with classpath exception' url='https://glassfish.java.net/nonav/public/CDDL+GPL_1_1.html'>
-    <dependency>hk2-utils-2.5.0-b32.jar</dependency>
-    <dependency>aopalliance-repackaged-2.5.0-b32.jar</dependency>
-    <dependency>hk2-api-2.5.0-b32.jar</dependency>
+    <dependency>aopalliance-repackaged-2.5.0-b05.jar</dependency>
+    <dependency>hk2-api-2.5.0-b05.jar</dependency>
+    <dependency>hk2-utils-2.5.0-b05.jar</dependency>
     <dependency>javax.inject-2.5.0-b32.jar</dependency>
-    <dependency>hk2-locator-2.5.0-b32.jar</dependency>
   </license>
   <license name='New BSD License' url='http://www.opensource.org/licenses/bsd-license.php'>
     <dependency>owasp-java-html-sanitizer-r239.jar</dependency>
