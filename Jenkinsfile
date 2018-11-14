@@ -10,10 +10,15 @@ node('master') {
   stage ('Preparation') {
     git branch: BRANCH, credentialsId: SSH_CRED_ID, url: 'git@github.com:SergiiRedchuk/permission_check.git'
   }
+  /*
   stage ('Generate License Report') {
     licensingSupport.generateLicenseReport()
   }
   stage ('Push License Report') {
     licensingSupport.pushLicenseReport()
+  }
+  */
+  stage ('Generate and Push License Report') {
+    licensingSupport.generateAndPushLicenseReport()
   }
 }
