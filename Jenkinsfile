@@ -17,6 +17,6 @@ node('master') {
 
   updateLicenseReportStage {
     branch = BRANCH
-    sshAgent = sshAgent
+    sshCredentialsId = SSH_CRED_ID
   }
 }
