@@ -16,16 +16,16 @@ node('master') {
     licensingSupport.generateAndPushLicenseReport()
   }
   */
+  /*
   stage ('Update License Report') {
       def licenseReportUpdater = new LicenseReportUpdater(this, BRANCH, SSH_CRED_ID)
       //licenseReportUpdater.gradleRuntime = rtGradle
       licenseReportUpdater.run()
     }
+    */
 
-/*
   updateLicenseReportStage {
     branch = BRANCH
     sshCredentialsId = SSH_CRED_ID
   }
-  */
 }
