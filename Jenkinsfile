@@ -27,4 +27,6 @@ node('master') {
   stage('Update License Report') {
     updateLicenseReport(BRANCH, SSH_CRED_ID)
   }
+
+  cleanWs()
 }
