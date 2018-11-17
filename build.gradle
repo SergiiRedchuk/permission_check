@@ -142,7 +142,7 @@ dependencies {
     compile (group: 'gov.ca.cwds.api', name: 'api-core', version: coreApiVersion) {
         exclude group: 'org.glassfish.jersey.core'
     }
-    //compile group: 'gov.ca.cwds.api', name: 'drools-engine', version: coreApiVersion
+    compile group: 'gov.ca.cwds.api', name: 'drools-engine', version: coreApiVersion
 //    compile group: 'gov.ca.cwds.api', name: 'legacy-data-access-services', version: coreApiVersion
 //    compile group: 'gov.ca.cwds.api', name: 'api-core-common', version: coreApiVersion
 
