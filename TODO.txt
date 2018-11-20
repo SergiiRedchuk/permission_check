@@ -1,0 +1,47 @@
+
+https://wiki.jenkins.io/display/JENKINS/SSH+Agent+Plugin
+
+todo videos on phone, PTO dates!!!
+
+TODO commonize test utils !!!!!!!!!!!!!!!!!!!!!!!!!
+
+TODO dashboard:
+  bundle command
+TODO
+  https://github.com/ca-cwds/jenkins-pipeline-utils/pull/10
+  https://github.com/ca-cwds/dashboard/pull/127
+TODO auto test for the shared stage
+todo with behavior / gradleRuntime
+
+
+    // evaluate(new File("getThing.groovy"))
+    def "When the updateLicenseReportStage is called in the back-end project with gradle and it uses hierynomus license then license report is updated"() {
+        given:
+        /*def shell = new GroovyShell()
+        shell.evaluate(new File("vars/updateLicenseReportStage.groovy")).call({
+            branch = BRANCH
+            sshCredentialsId = SSH_CRED_ID
+            gradleRuntime = rtGradle
+        })*/
+        //def updateLicenseReportStage = new updateLicenseReportStage()
+        def binding = new Binding()
+        File currentDir = new File('.')
+        def roots = []
+        roots.add(currentDir.getAbsolutePath())
+        def engine = new GroovyScriptEngine((String[])roots.toArray())
+        def stage = engine.run('vars/updateLicenseReportStage.groovy', binding)
+        stage.call({
+            branch = BRANCH
+            sshCredentialsId = SSH_CRED_ID
+            gradleRuntime = rtGradle
+        })
+    }
+
+
+TODO JIRA:
+  DESCRIBE STEPS DONE
+  DESCRIBE BLOCKERS
+
+//def lib = library('my-shared-library').com.mycorp.pipeline // preselect the package
+//echo useSomeLib(lib.Helper.new(lib.Constants.SOME_TEXT))
+
