@@ -2,7 +2,7 @@ def BRANCH = 'master'
 def SSH_CRED_ID = '1db97a1a-6604-4d90-9790-a0fd931af6f4'
 
 //@Library('jenk_lib@master') _
-@Library('jenkins-pipeline-utils') _
+@Library('jenkins-pipeline-utils@FIT-229') _
 //import gov.ca.cwds.jenkins.licensing.LicenseReportUpdater
 
 node('master') {
