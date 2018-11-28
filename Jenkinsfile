@@ -6,10 +6,15 @@ def SSH_CRED_ID = '1db97a1a-6604-4d90-9790-a0fd931af6f4'
 //import gov.ca.cwds.jenkins.licensing.LicenseReportUpdater
 
 class RuntimeGradle {
-  RuntimeGradle() {}
+  def pipeline
+
+  RuntimeGradle(pipeline) {
+    this.pipeline = pipeline
+  }
+
   def run(map) {
-    echo("*************************************")
-    echo(map)
+    pipeline.echo("*************************************")
+    pipeline.echo(map)
   }
 }
 
@@ -25,7 +30,7 @@ node('master') {
   */
 
   stage('Update License Report') {
-    def rtGradle = new RuntimeGradle()
+    def rtGradle = new RuntimeGradle(this)
     updateLicenseReport(BRANCH, SSH_CRED_ID, [runtimeGradle: rtGradle])
   }
 
