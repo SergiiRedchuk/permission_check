@@ -15,6 +15,7 @@ class RuntimeGradle {
   def run(map) {
     pipeline.echo("*************************************")
     pipeline.echo(map.toString())
+    pipeline.sh './gradlew downloadLicenses'
   }
 }
 
