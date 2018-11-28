@@ -14,7 +14,7 @@ class RuntimeGradle {
 
   def run(map) {
     pipeline.echo("*************************************")
-    pipeline.echo(map)
+    pipeline.echo(map.toString())
   }
 }
 
