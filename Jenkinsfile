@@ -8,8 +8,8 @@ def SSH_CRED_ID = '1db97a1a-6604-4d90-9790-a0fd931af6f4'
 class RuntimeGradle {
   RuntimeGradle() {}
   def run(map) {
-    println("*************************************")
-    println(map)
+    echo("*************************************")
+    echo(map)
   }
 }
 
