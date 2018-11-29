@@ -1,0 +1,415 @@
+<licenses>
+  <license name='Eclipse Public License (EPL), Version 1.0' url='http://www.eclipse.org/legal/epl-v10.html'>
+    <dependency>hibernate-jpa-2.1-api-1.0.0.Final.jar</dependency>
+  </license>
+  <license name='BSD licence' url='http://antlr.org/license.html'>
+    <dependency>antlr-runtime-3.5.jar</dependency>
+  </license>
+  <license name='CDDL + GPLv2 with classpath exception' url='https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html'>
+    <dependency>javax.annotation-api-1.2.jar</dependency>
+    <dependency>osgi-resource-locator-1.0.1.jar</dependency>
+    <dependency>javax.el-3.0.0.jar</dependency>
+    <dependency>javax.servlet-api-3.1.0.jar</dependency>
+  </license>
+  <license name='Apache 2' url='http://www.apache.org/licenses/LICENSE-2.0'>
+    <dependency>sundial-2.1.3.jar</dependency>
+    <dependency>dropwizard-sundial-1.3.1.jar</dependency>
+  </license>
+  <license name='Indiana University Extreme! Lab Software License, vesion 1.1.1' url='http://www.extreme.indiana.edu/viewcvs/~checkout~/XPP3/java/LICENSE.txt'>
+    <dependency>xpp3_min-1.1.4c.jar</dependency>
+  </license>
+  <license name='GNU Lesser Public License' url='http://www.gnu.org/licenses/lgpl.html'>
+    <dependency>annotations-3.0.1.jar</dependency>
+  </license>
+  <license name='The MIT License' url='http://www.opensource.org/licenses/mit-license.php'>
+    <dependency>jopt-simple-5.0.2.jar</dependency>
+  </license>
+  <license name='Apache License, Version 2.0' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+    <dependency>jandex-2.0.3.Final.jar</dependency>
+    <dependency>hibernate-validator-5.3.4.Final.jar</dependency>
+    <dependency>tomcat-juli-8.5.9.jar</dependency>
+    <dependency>httpclient-4.5.5.jar</dependency>
+    <dependency>commons-codec-1.10.jar</dependency>
+    <dependency>snakeyaml-1.17.jar</dependency>
+    <dependency>tomcat-jdbc-8.5.9.jar</dependency>
+    <dependency>httpcore-nio-4.4.5.jar</dependency>
+    <dependency>commons-collections4-4.1.jar</dependency>
+    <dependency>httpcore-4.4.9.jar</dependency>
+    <dependency>jcip-annotations-1.0-1.jar</dependency>
+  </license>
+  <license name='Public Domain' url='http://www.xmlpull.org/v1/download/unpacked/LICENSE.txt'>
+    <dependency>xmlpull-1.1.3.1.jar</dependency>
+  </license>
+  <license name='Apache Software License - Version 2.0' url='http://www.apache.org/licenses/LICENSE-2.0'>
+    <dependency>jetty-servlet-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-continuation-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-setuid-java-1.0.3.jar</dependency>
+    <dependency>jetty-xml-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-io-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-server-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-servlets-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-webapp-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-util-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-security-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-http-9.4.2.v20170220.jar</dependency>
+  </license>
+  <license name='Eclipse Public License - Version 1.0' url='http://www.eclipse.org/org/documents/epl-v10.php'>
+    <dependency>jetty-servlet-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-continuation-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-setuid-java-1.0.3.jar</dependency>
+    <dependency>jetty-xml-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-io-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-server-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-servlets-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-webapp-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-util-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-security-9.4.2.v20170220.jar</dependency>
+    <dependency>jetty-http-9.4.2.v20170220.jar</dependency>
+  </license>
+  <license name='CDDL 1.1' url='http://glassfish.java.net/public/CDDL+GPL_1_1.html'>
+    <dependency>javax.ws.rs-api-2.0.1.jar</dependency>
+  </license>
+  <license name='Apache License 2.0' url='http://www.apache.org/licenses/LICENSE-2.0.html'>
+    <dependency>metrics-jersey2-3.2.2.jar</dependency>
+    <dependency>swagger-jersey2-jaxrs-1.5.9.jar</dependency>
+    <dependency>dropwizard-jackson-1.1.0.jar</dependency>
+    <dependency>dropwizard-metrics-1.1.0.jar</dependency>
+    <dependency>dropwizard-db-1.1.0.jar</dependency>
+    <dependency>metrics-servlets-3.2.2.jar</dependency>
+    <dependency>swagger-models-1.5.9.jar</dependency>
+    <dependency>metrics-core-3.2.2.jar</dependency>
+    <dependency>dropwizard-request-logging-1.1.0.jar</dependency>
+    <dependency>shiro-jersey-0.2.0.jar</dependency>
+    <dependency>dropwizard-views-1.1.0.jar</dependency>
+    <dependency>metrics-jetty9-3.2.2.jar</dependency>
+    <dependency>dropwizard-assets-1.1.0.jar</dependency>
+    <dependency>metrics-json-3.2.2.jar</dependency>
+    <dependency>metrics-annotation-3.2.2.jar</dependency>
+    <dependency>dropwizard-configuration-1.1.0.jar</dependency>
+    <dependency>dropwizard-jetty-1.1.0.jar</dependency>
+    <dependency>dropwizard-jersey-1.1.0.jar</dependency>
+    <dependency>swagger-core-1.5.9.jar</dependency>
+    <dependency>swagger-annotations-1.5.9.jar</dependency>
+    <dependency>metrics-jvm-3.2.2.jar</dependency>
+    <dependency>dropwizard-logging-1.1.0.jar</dependency>
+    <dependency>swagger-jaxrs-1.5.9.jar</dependency>
+    <dependency>dropwizard-servlets-1.1.0.jar</dependency>
+    <dependency>dropwizard-core-1.1.0.jar</dependency>
+    <dependency>dropwizard-shiro-0.2.0.jar</dependency>
+    <dependency>dropwizard-views-mustache-1.1.0.jar</dependency>
+    <dependency>dropwizard-lifecycle-1.1.0.jar</dependency>
+    <dependency>dropwizard-validation-1.1.0.jar</dependency>
+    <dependency>dropwizard-hibernate-1.1.0.jar</dependency>
+    <dependency>metrics-logback-3.2.2.jar</dependency>
+    <dependency>metrics-healthchecks-3.2.2.jar</dependency>
+    <dependency>dropwizard-util-1.1.0.jar</dependency>
+  </license>
+  <license name='UnboundID LDAP SDK Free Use License' url='https://docs.ldap.com/ldap-sdk/docs/LICENSE-UnboundID-LDAPSDK.txt'>
+    <dependency>unboundid-ldapsdk-3.2.0.jar</dependency>
+  </license>
+  <license name='Eclipse Public License - v 1.0' url='http://www.eclipse.org/legal/epl-v10.html'>
+    <dependency>logback-classic-1.2.1.jar</dependency>
+    <dependency>logback-access-1.2.1.jar</dependency>
+    <dependency>logback-core-1.2.1.jar</dependency>
+  </license>
+  <license name='New BSD license' url='http://www.opensource.org/licenses/bsd-license.php'>
+    <dependency>protobuf-java-2.6.0.jar</dependency>
+  </license>
+  <license name='MIT License' url='http://www.opensource.org/licenses/mit-license.php'>
+    <dependency>slf4j-ext-1.7.25.jar</dependency>
+    <dependency>jul-to-slf4j-1.7.24.jar</dependency>
+    <dependency>slf4j-api-1.7.25.jar</dependency>
+    <dependency>slf4j-simple-1.7.25.jar</dependency>
+    <dependency>jcl-over-slf4j-1.7.24.jar</dependency>
+  </license>
+  <license name='GNU General Public License version 2 (GPLv2)' url='http://www.gnu.org/licenses/gpl-2.0.html'>
+    <dependency>unboundid-ldapsdk-3.2.0.jar</dependency>
+  </license>
+  <license name='CDDL + GPLv2 with classpath exception' url='http://glassfish.dev.java.net/nonav/public/CDDL+GPL.html'>
+    <dependency>javax.el-2.2.4.jar</dependency>
+    <dependency>javax.el-api-2.2.4.jar</dependency>
+  </license>
+  <license name='BSD style' url='http://x-stream.github.io/license.html'>
+    <dependency>xstream-1.4.9.jar</dependency>
+  </license>
+  <license name='Public Domain' url='http://creativecommons.org/licenses/publicdomain'>
+    <dependency>xpp3_min-1.1.4c.jar</dependency>
+  </license>
+  <license name='MPL 1.1' url='http://www.mozilla.org/MPL/MPL-1.1.html'>
+    <dependency>javassist-3.22.0-GA.jar</dependency>
+  </license>
+  <license name='No license found'>
+    <dependency>api-core-cms-1.9.4_867-RC.jar</dependency>
+    <dependency>dropwizard-guice-1.0.6.0.jar</dependency>
+    <dependency>legacy-data-access-1.9.4_867-RC.jar</dependency>
+    <dependency>jcip-annotations-1.0.jar</dependency>
+    <dependency>db2jcc4-4.0.0.jar</dependency>
+    <dependency>db2jcc_license_cisuz-4.0.0.jar</dependency>
+    <dependency>jwt-security-4.0.0_1010-RC.jar</dependency>
+    <dependency>api-core-common-1.9.4_867-RC.jar</dependency>
+    <dependency>api-security-common-4.0.0_1010-RC.jar</dependency>
+    <dependency>api-core-rest-1.9.4_867-RC.jar</dependency>
+    <dependency>api-core-1.9.4_867-RC.jar</dependency>
+    <dependency>drools-engine-1.9.4_867-RC.jar</dependency>
+    <dependency>api-security-4.0.0_1010-RC.jar</dependency>
+    <dependency>dom4j-1.6.1.jar</dependency>
+    <dependency>api-core-abac-1.9.4_867-RC.jar</dependency>
+    <dependency>jta-1.1.jar</dependency>
+  </license>
+  <license name='BSD License' url='http://www.antlr.org/license.html'>
+    <dependency>antlr-2.7.7.jar</dependency>
+  </license>
+  <license name='GNU Lesser General Public License' url='http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html'>
+    <dependency>logback-classic-1.2.1.jar</dependency>
+    <dependency>logback-access-1.2.1.jar</dependency>
+    <dependency>logback-core-1.2.1.jar</dependency>
+  </license>
+  <license name='The Apache License, Version 2.0' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+    <dependency>profiler-1.0.2.jar</dependency>
+  </license>
+  <license name='The Apache Software License, Version 2.0' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+    <dependency>transport-netty3-client-5.5.0.jar</dependency>
+    <dependency>jackson-dataformat-smile-2.8.6.jar</dependency>
+    <dependency>securesm-1.1.jar</dependency>
+    <dependency>mvel2-2.3.0.Final.jar</dependency>
+    <dependency>jackson-module-afterburner-2.8.7.jar</dependency>
+    <dependency>stax-api-1.0.1.jar</dependency>
+    <dependency>shiro-guice-1.2.0.jar</dependency>
+    <dependency>commons-logging-1.2.jar</dependency>
+    <dependency>commons-beanutils-1.8.3.jar</dependency>
+    <dependency>jackson-dataformat-cbor-2.8.6.jar</dependency>
+    <dependency>lang-mustache-client-5.5.0.jar</dependency>
+    <dependency>xmlbeans-2.6.0.jar</dependency>
+    <dependency>parent-join-client-5.5.0.jar</dependency>
+    <dependency>jackson-dataformat-yaml-2.8.7.jar</dependency>
+    <dependency>classmate-1.3.1.jar</dependency>
+    <dependency>jackson-datatype-joda-2.8.7.jar</dependency>
+    <dependency>drools-core-7.1.0.Final.jar</dependency>
+    <dependency>jackson-datatype-jdk8-2.8.7.jar</dependency>
+    <dependency>guice-4.0.jar</dependency>
+    <dependency>percolator-client-5.5.0.jar</dependency>
+    <dependency>j2objc-annotations-1.1.jar</dependency>
+    <dependency>drools-compiler-7.1.0.Final.jar</dependency>
+    <dependency>guava-22.0.jar</dependency>
+    <dependency>rest-5.5.0.jar</dependency>
+    <dependency>geronimo-jta_1.1_spec-1.1.1.jar</dependency>
+    <dependency>0-jersey2-guice-spi-1.0.6.jar</dependency>
+    <dependency>jackson-jaxrs-json-provider-2.8.7.jar</dependency>
+    <dependency>jackson-jaxrs-base-2.8.7.jar</dependency>
+    <dependency>transport-netty4-client-5.5.0.jar</dependency>
+    <dependency>jackson-datatype-jsr310-2.8.7.jar</dependency>
+    <dependency>t-digest-3.0.jar</dependency>
+    <dependency>jna-4.4.0.jar</dependency>
+    <dependency>reindex-client-5.5.0.jar</dependency>
+    <dependency>shiro-web-1.2.3.jar</dependency>
+    <dependency>accessors-smart-1.2.jar</dependency>
+    <dependency>jackson-datatype-guava-2.8.7.jar</dependency>
+    <dependency>jersey2-guice-impl-1.0.6.jar</dependency>
+    <dependency>jackson-core-2.8.7.jar</dependency>
+    <dependency>transport-5.5.0.jar</dependency>
+    <dependency>javax.inject-1.jar</dependency>
+    <dependency>sniffer-5.5.0.jar</dependency>
+    <dependency>guice-multibindings-4.0.jar</dependency>
+    <dependency>poi-ooxml-schemas-3.17.jar</dependency>
+    <dependency>groovy-all-2.4.10.jar</dependency>
+    <dependency>jsr305-3.0.1.jar</dependency>
+    <dependency>jackson-databind-2.8.7.jar</dependency>
+    <dependency>validation-api-1.1.0.Final.jar</dependency>
+    <dependency>jackson-dataformat-xml-2.4.5.jar</dependency>
+    <dependency>poi-ooxml-3.17.jar</dependency>
+    <dependency>hppc-0.7.1.jar</dependency>
+    <dependency>uberfire-maven-support-1.1.0.Final.jar</dependency>
+    <dependency>shiro-core-1.2.3.jar</dependency>
+    <dependency>jackson-module-parameter-names-2.8.7.jar</dependency>
+    <dependency>guice-servlet-4.0.jar</dependency>
+    <dependency>jackson-datatype-hibernate5-2.8.7.jar</dependency>
+    <dependency>kie-api-7.1.0.Final.jar</dependency>
+    <dependency>poi-scratchpad-3.17.jar</dependency>
+    <dependency>poi-3.17.jar</dependency>
+    <dependency>jackson-module-jaxb-annotations-2.8.7.jar</dependency>
+    <dependency>nimbus-jose-jwt-4.39.jar</dependency>
+    <dependency>elasticsearch-5.5.0.jar</dependency>
+    <dependency>json-smart-2.3.jar</dependency>
+    <dependency>jackson-annotations-2.8.0.jar</dependency>
+    <dependency>kie-internal-7.1.0.Final.jar</dependency>
+  </license>
+  <license name='Apache Software Licenses' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+    <dependency>log4j-over-slf4j-1.7.24.jar</dependency>
+  </license>
+  <license name='CDDL+GPL License' url='http://glassfish.java.net/public/CDDL+GPL_1_1.html'>
+    <dependency>jersey-common-2.25.1.jar</dependency>
+    <dependency>jersey-declarative-linking-2.23.2.jar</dependency>
+    <dependency>jersey-server-2.25.1.jar</dependency>
+    <dependency>jersey-container-servlet-core-2.25.1.jar</dependency>
+    <dependency>jersey-metainf-services-2.25.1.jar</dependency>
+    <dependency>jersey-media-jaxb-2.25.1.jar</dependency>
+    <dependency>jersey-media-multipart-2.1.jar</dependency>
+    <dependency>jersey-container-servlet-2.25.1.jar</dependency>
+    <dependency>jersey-guava-2.25.1.jar</dependency>
+    <dependency>jersey-bean-validation-2.25.1.jar</dependency>
+    <dependency>jersey-client-2.25.1.jar</dependency>
+  </license>
+  <license name='Apache 2.0' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+    <dependency>error_prone_annotations-2.0.18.jar</dependency>
+    <dependency>dropwizard-flyway-1.0.0-1.jar</dependency>
+  </license>
+  <license name='Public Domain, per Creative Commons CC0' url='http://creativecommons.org/publicdomain/zero/1.0/'>
+    <dependency>HdrHistogram-2.1.9.jar</dependency>
+  </license>
+  <license name='Apache License, Version 2.0' url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
+    <dependency>commons-io-2.6.jar</dependency>
+    <dependency>commons-lang3-3.6.jar</dependency>
+    <dependency>commons-text-1.1.jar</dependency>
+    <dependency>log4j-api-2.8.2.jar</dependency>
+  </license>
+  <license name='Bouncy Castle Licence' url='http://www.bouncycastle.org/licence.html'>
+    <dependency>bcprov-jdk15on-1.55.jar</dependency>
+    <dependency>bcprov-jdk16-1.46.jar</dependency>
+    <dependency>bcpkix-jdk15on-1.55.jar</dependency>
+  </license>
+  <license name='Apache License, Version 2.0' url='https://github.com/flyway/flyway/blob/master/LICENSE.txt'>
+    <dependency>flyway-core-4.0.3.jar</dependency>
+  </license>
+  <license name='LGPL 2.1' url='http://www.gnu.org/licenses/lgpl-2.1.html'>
+    <dependency>javassist-3.22.0-GA.jar</dependency>
+  </license>
+  <license name='GNU General Public License, Version 2 with the Classpath Exception' url='http://repository.jboss.org/licenses/gpl-2.0-ce.txt'>
+    <dependency>jboss-transaction-api_1.2_spec-1.0.1.Final.jar</dependency>
+  </license>
+  <license name='BSD License' url='http://opensource.org/licenses/BSD-3-Clause'>
+    <dependency>curvesapi-1.04.jar</dependency>
+  </license>
+  <license name='The PostgreSQL License' url='http://www.postgresql.org/about/licence/'>
+    <dependency>postgresql-9.4.1208.jre7.jar</dependency>
+  </license>
+  <license name='The Apache Software License, Version 2.0' url='src/assemble/EHCACHE-CORE-LICENSE.txt'>
+    <dependency>ehcache-2.10.3.jar</dependency>
+  </license>
+  <license name='CDDL + GPLv2 with classpath exception' url='https://glassfish.java.net/nonav/public/CDDL+GPL_1_1.html'>
+    <dependency>hk2-utils-2.5.0-b32.jar</dependency>
+    <dependency>aopalliance-repackaged-2.5.0-b32.jar</dependency>
+    <dependency>hk2-api-2.5.0-b32.jar</dependency>
+    <dependency>javax.inject-2.5.0-b32.jar</dependency>
+    <dependency>hk2-locator-2.5.0-b32.jar</dependency>
+  </license>
+  <license name='New BSD License' url='http://www.opensource.org/licenses/bsd-license.php'>
+    <dependency>owasp-java-html-sanitizer-r239.jar</dependency>
+  </license>
+  <license name='Apache 2' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+    <dependency>lucene-backward-codecs-6.6.0.jar</dependency>
+    <dependency>lucene-core-6.6.0.jar</dependency>
+    <dependency>usertype.spi-6.0.1.GA.jar</dependency>
+    <dependency>joda-time-2.9.7.jar</dependency>
+    <dependency>lucene-spatial3d-6.6.0.jar</dependency>
+    <dependency>lucene-analyzers-common-6.6.0.jar</dependency>
+    <dependency>usertype.core-6.0.1.GA.jar</dependency>
+    <dependency>lucene-grouping-6.6.0.jar</dependency>
+    <dependency>lucene-memory-6.6.0.jar</dependency>
+    <dependency>lucene-queries-6.6.0.jar</dependency>
+    <dependency>lucene-spatial-6.6.0.jar</dependency>
+    <dependency>lucene-sandbox-6.6.0.jar</dependency>
+    <dependency>lucene-highlighter-6.6.0.jar</dependency>
+    <dependency>lucene-misc-6.6.0.jar</dependency>
+    <dependency>lucene-suggest-6.6.0.jar</dependency>
+    <dependency>lucene-join-6.6.0.jar</dependency>
+    <dependency>lucene-spatial-extras-6.6.0.jar</dependency>
+    <dependency>lucene-queryparser-6.6.0.jar</dependency>
+  </license>
+  <license name='GPL2 w/ CPE' url='https://glassfish.java.net/public/CDDL+GPL_1_1.html'>
+    <dependency>mimepull-1.8.jar</dependency>
+  </license>
+  <license name='Apache License, Version 2.0' url='http://www.apache.org/licenses/LICENSE-2.0.html'>
+    <dependency>super-csv-2.4.0.jar</dependency>
+  </license>
+  <license name='GPL2 w/ CPE' url='http://glassfish.java.net/public/CDDL+GPL_1_1.html'>
+    <dependency>javax.ws.rs-api-2.0.1.jar</dependency>
+  </license>
+  <license name='' url='https://newrelic.com/docs/java/java-agent-license'>
+    <dependency>newrelic-api-3.41.0.jar</dependency>
+  </license>
+  <license name='Common Development and Distribution License' url='http://repository.jboss.org/licenses/cddl.txt'>
+    <dependency>jboss-transaction-api_1.2_spec-1.0.1.Final.jar</dependency>
+  </license>
+  <license name='BSD' url='http://asm.objectweb.org/license.html'>
+    <dependency>asm-5.0.4.jar</dependency>
+  </license>
+  <license name='Apache License, Version 2.0' url='http://www.apache.org/licenses/LICENSE-2.0'>
+    <dependency>netty-resolver-4.1.11.Final.jar</dependency>
+    <dependency>netty-3.10.6.Final.jar</dependency>
+    <dependency>netty-handler-4.1.11.Final.jar</dependency>
+    <dependency>netty-codec-http-4.1.11.Final.jar</dependency>
+    <dependency>netty-codec-4.1.11.Final.jar</dependency>
+    <dependency>netty-transport-4.1.11.Final.jar</dependency>
+    <dependency>netty-common-4.1.11.Final.jar</dependency>
+    <dependency>netty-buffer-4.1.11.Final.jar</dependency>
+  </license>
+  <license name='The New BSD License' url='http://www.opensource.org/licenses/bsd-license.html'>
+    <dependency>reflections-0.9.10.jar</dependency>
+  </license>
+  <license name='GNU Lesser General Public License version 2.1 (LGPLv2.1)' url='http://www.gnu.org/licenses/lgpl-2.1.html'>
+    <dependency>unboundid-ldapsdk-3.2.0.jar</dependency>
+  </license>
+  <license name='Common Development and Distribution License (CDDL) v1.0' url='https://glassfish.dev.java.net/public/CDDLv1.0.html'>
+    <dependency>activation-1.1.jar</dependency>
+  </license>
+  <license name='CDDL/GPLv2+CE' url='https://glassfish.java.net/public/CDDL+GPL_1_1.html'>
+    <dependency>javax.mail-1.5.3.jar</dependency>
+  </license>
+  <license name='GNU Lesser General Public License' url='http://www.gnu.org/licenses/lgpl-2.1.html'>
+    <dependency>hibernate-ehcache-5.2.17.Final.jar</dependency>
+    <dependency>hibernate-commons-annotations-5.0.1.Final.jar</dependency>
+    <dependency>hibernate-entitymanager-5.2.1.Final.jar</dependency>
+    <dependency>hibernate-core-5.2.17.Final.jar</dependency>
+  </license>
+  <license name='MIT license' url='http://www.opensource.org/licenses/mit-license.php'>
+    <dependency>animal-sniffer-annotations-1.14.jar</dependency>
+  </license>
+  <license name='Apache License, version 2.0' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+    <dependency>jboss-logging-3.3.1.Final.jar</dependency>
+  </license>
+  <license name='Eclipse Public License v1.0' url='http://www.eclipse.org/org/documents/epl-v10.php'>
+    <dependency>ecj-4.4.2.jar</dependency>
+  </license>
+  <license name='Eclipse Distribution License (EDL), Version 1.0' url='http://www.eclipse.org/org/documents/edl-v10.php'>
+    <dependency>hibernate-jpa-2.1-api-1.0.0.Final.jar</dependency>
+  </license>
+  <license name='Apache License 2.0' url='http://www.apache.org/licenses/LICENSE-2.0'>
+    <dependency>compiler-0.9.4.jar</dependency>
+  </license>
+  <license name='The BSD License' url='http://www.opensource.org/licenses/bsd-license.php'>
+    <dependency>stax2-api-3.1.4.jar</dependency>
+  </license>
+  <license name='Elastic Commercial Software End User License Agreement' url='https://www.elastic.co/eula/'>
+    <dependency>x-pack-api-5.5.0.jar</dependency>
+    <dependency>x-pack-transport-5.5.0.jar</dependency>
+  </license>
+  <license name='provided without support or warranty' url='http://www.json.org/license.html'>
+    <dependency>json-20090211.jar</dependency>
+  </license>
+  <license name='CDDL 1.1' url='https://glassfish.java.net/public/CDDL+GPL_1_1.html'>
+    <dependency>mimepull-1.8.jar</dependency>
+  </license>
+  <license name='Atomikos Multiple Licensing Scheme' url='http://www.atomikos.com/Main/WhichLicenseApplies'>
+    <dependency>transactions-4.0.6.jar</dependency>
+    <dependency>transactions-hibernate4-4.0.6.jar</dependency>
+    <dependency>transactions-api-4.0.6.jar</dependency>
+    <dependency>transactions-jdbc-4.0.6.jar</dependency>
+    <dependency>atomikos-util-4.0.6.jar</dependency>
+    <dependency>transactions-jta-4.0.6.jar</dependency>
+  </license>
+  <license name='WTFPL' url='http://www.wtfpl.net/'>
+    <dependency>reflections-0.9.10.jar</dependency>
+  </license>
+  <license name='Public Domain'>
+    <dependency>aopalliance-1.0.jar</dependency>
+  </license>
+  <license name='Apache License 2.0' url='http://www.apache.org/licenses/'>
+    <dependency>javassist-3.22.0-GA.jar</dependency>
+  </license>
+  <license name='Apache License, Version 2.0' url='LICENSE.txt'>
+    <dependency>httpasyncclient-4.1.2.jar</dependency>
+  </license>
+  <license name='MIT' url='https://raw.github.com/tatsuhiro-t/argparse4j/master/LICENSE.txt'>
+    <dependency>argparse4j-0.7.0.jar</dependency>
+  </license>
+</licenses>
